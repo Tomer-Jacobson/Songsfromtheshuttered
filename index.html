@@ -171,7 +171,10 @@
         <h1>Songs from the Shuttered</h1>
         <p class="lead">Fine art project dedicated to songs.</p>
       </div>
-      <button id="aboutBtn" class="close-btn">About</button>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <button id="bookBtn" class="close-btn" aria-label="Open book PDF">Book</button>
+        <button id="aboutBtn" class="close-btn">About</button>
+      </div>
     </header>
 
     <main>
@@ -236,6 +239,8 @@
     const aboutModal = document.getElementById('aboutModal');
     const aboutCloseBtn = document.getElementById('aboutCloseBtn');
 
+    const bookBtn = document.getElementById('bookBtn');
+
     function captionFromFilename(name){
       return name.replace(/\.[^.]+$/, '').trim();
     }
@@ -269,6 +274,13 @@
     aboutBtn.onclick = () => aboutModal.classList.add('open');
     aboutCloseBtn.onclick = () => aboutModal.classList.remove('open');
     aboutModal.onclick = e => e.target === aboutModal && aboutModal.classList.remove('open');
+
+    // Open the uploaded PDF (SFTS.pdf) when Book is clicked.
+    bookBtn.addEventListener('click', () => {
+      // The PDF is expected to be in the site root (same directory as index.html).
+      const win = window.open('SFTS.pdf', '_blank');
+      if (win) win.opener = null;
+    });
 
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape'){
