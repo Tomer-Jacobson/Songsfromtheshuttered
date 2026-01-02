@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Songs from the Shuttered — Gallery</title>
+
   <style>
     :root{
       --bg:#0f1113;
@@ -11,20 +12,18 @@
       --muted:#9aa0a6;
       --accent:#e6e6e6;
       --gap:18px;
-      --rows: 4;        /* fixed to 4 rows */
-      --row-height: 190px;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --rows:4;
+      --row-height:190px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
     }
+
     html,body{height:100%}
     body{
       margin:0;
       background:linear-gradient(180deg,#070708 0%, #0f1113 100%);
       color:var(--accent);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
       padding:36px;
       display:flex;
-      align-items:flex-start;
       justify-content:center;
     }
 
@@ -37,29 +36,39 @@
       margin-bottom:18px;
       display:flex;
       align-items:center;
-      gap:18px;
       justify-content:space-between;
+      gap:18px;
       flex-wrap:wrap;
     }
+
     h1{
       margin:0;
       font-weight:600;
-      letter-spacing:0.2px;
     }
+
     p.lead{
       margin:0;
       color:var(--muted);
       font-size:0.95rem;
     }
 
-    /* Grid that fills columns vertically to form N rows */
+    .close-btn{
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.08);
+      color:var(--accent);
+      padding:8px 14px;
+      border-radius:6px;
+      cursor:pointer;
+      font-size:0.9rem;
+    }
+
+    /* Grid */
     .grid{
       display:grid;
-      grid-auto-flow: column;
-      grid-auto-columns: minmax(220px, 1fr);
-      grid-template-rows: repeat(var(--rows), var(--row-height));
+      grid-auto-flow:column;
+      grid-auto-columns:minmax(220px,1fr);
+      grid-template-rows:repeat(var(--rows), var(--row-height));
       gap:var(--gap);
-      align-items:stretch;
     }
 
     figure{
@@ -67,43 +76,44 @@
       background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
       border-radius:8px;
       overflow:hidden;
-      box-shadow: 0 6px 18px rgba(2,6,10,0.6);
+      box-shadow:0 6px 18px rgba(2,6,10,0.6);
       cursor:pointer;
       transition:transform 160ms ease, box-shadow 160ms ease;
       display:flex;
       flex-direction:column;
-      height:100%; /* important so items fill grid row slot */
+      height:100%;
     }
-    figure:hover{ transform: translateY(-6px); box-shadow: 0 18px 36px rgba(2,6,10,0.7); }
+
+    figure:hover{
+      transform:translateY(-6px);
+      box-shadow:0 18px 36px rgba(2,6,10,0.7);
+    }
 
     .thumb{
       flex:1;
-      background:#000;
-      display:block;
       position:relative;
+      background:#000;
     }
+
     .thumb img{
       position:absolute;
       inset:0;
       width:100%;
       height:100%;
       object-fit:cover;
-      display:block;
     }
 
     figcaption{
       padding:10px 12px;
-      font-size:0.92rem;
-      color:var(--accent);
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:10px;
-      border-top:1px solid rgba(255,255,255,0.02);
+      font-size:0.9rem;
+      color:var(--muted);
+      border-top:1px solid rgba(255,255,255,0.03);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
-    .cap-left{ color:var(--muted); font-size:0.88rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:85%; }
 
-    /* modal */
+    /* Modal (shared) */
     .modal{
       position:fixed;
       inset:0;
@@ -114,51 +124,46 @@
       z-index:1000;
       padding:24px;
     }
+
     .modal.open{ display:flex; }
+
     .modal-content{
       max-width:92%;
       max-height:92%;
+      background:var(--card);
       border-radius:8px;
       overflow:hidden;
-      background:var(--card);
       box-shadow:0 30px 80px rgba(2,4,6,0.7);
       display:flex;
       flex-direction:column;
     }
+
     .modal-img{
       width:100%;
       height:calc(92vh - 120px);
       object-fit:contain;
       background:#000;
     }
+
     .modal-footer{
       padding:12px 14px;
       color:var(--muted);
-      font-size:0.95rem;
       display:flex;
       justify-content:space-between;
       align-items:center;
-      gap:10px;
-    }
-    .close-btn{
-      background:transparent;
-      border:1px solid rgba(255,255,255,0.06);
-      color:var(--accent);
-      padding:8px 12px;
-      border-radius:6px;
-      cursor:pointer;
-      font-size:0.9rem;
     }
 
     @media (max-width:920px){
       :root{ --row-height:160px; }
     }
+
     @media (max-width:640px){
       :root{ --row-height:120px; }
-      .grid{ grid-auto-columns: minmax(140px, 1fr); }
+      .grid{ grid-auto-columns:minmax(140px,1fr); }
     }
   </style>
 </head>
+
 <body>
   <div class="wrap">
     <header>
@@ -166,31 +171,44 @@
         <h1>Songs from the Shuttered</h1>
         <p class="lead">Minimal gallery — fixed to 4 thumbnail rows.</p>
       </div>
-
+      <button id="aboutBtn" class="close-btn">About</button>
     </header>
 
     <main>
-      <section class="grid" id="gallery" aria-label="Image gallery">
-        <!-- JavaScript will populate thumbnails -->
-      </section>
+      <section class="grid" id="gallery"></section>
     </main>
   </div>
 
-  <!-- Modal -->
-  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="modal-content" role="document">
+  <!-- Image Modal -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-content">
       <img id="modalImg" class="modal-img" src="" alt="">
       <div class="modal-footer">
         <div id="modalCaption"></div>
-        <div>
-          <button id="closeBtn" class="close-btn">Close</button>
-        </div>
+        <button id="closeBtn" class="close-btn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Modal -->
+  <div id="aboutModal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <div style="padding:20px; line-height:1.6;">
+        <h2>About</h2>
+        <p>
+          Songs from the Shuttered הוא פרויקט ויזואלי־מוזיקלי אישי.
+          כל תמונה מייצגת שיר, זיכרון או הד.
+        </p>
+        <p>
+          זהו אזור טקסט חופשי — ניתן לכתוב כאן ביוגרפיה,
+          הצהרת אמן או כל טקסט אחר.
+        </p>
+        <button id="aboutCloseBtn" class="close-btn">Close</button>
       </div>
     </div>
   </div>
 
   <script>
-    // Filenames to place in images/ folder (use exact names)
     const images = [
       "Her lies.jpg",
       "The Power of love.jpg",
@@ -217,59 +235,50 @@
     const modalCaption = document.getElementById('modalCaption');
     const closeBtn = document.getElementById('closeBtn');
 
+    const aboutBtn = document.getElementById('aboutBtn');
+    const aboutModal = document.getElementById('aboutModal');
+    const aboutCloseBtn = document.getElementById('aboutCloseBtn');
+
     function captionFromFilename(name){
-      return name.replace(/\.[^.]+$/, '')
-                 .replace(/[_-]+/g,' ')
-                 .replace(/\s{2,}/g,' ')
-                 .trim();
+      return name.replace(/\.[^.]+$/, '').trim();
     }
 
     images.forEach(name => {
       const fig = document.createElement('figure');
-
-      const thumb = document.createElement('div');
-      thumb.className = 'thumb';
-      const img = document.createElement('img');
-      img.src = 'images/' + encodeURI(name);
-      img.alt = captionFromFilename(name);
-      thumb.appendChild(img);
-
-      const figcap = document.createElement('figcaption');
-      const left = document.createElement('div');
-      left.className = 'cap-left';
-      left.textContent = captionFromFilename(name);
-      figcap.appendChild(left);
-
-      fig.appendChild(thumb);
-      fig.appendChild(figcap);
+      fig.innerHTML = `
+        <div class="thumb">
+          <img src="images/${encodeURI(name)}" alt="${captionFromFilename(name)}">
+        </div>
+        <figcaption>${captionFromFilename(name)}</figcaption>
+      `;
 
       fig.addEventListener('click', () => {
         modalImg.src = 'images/' + encodeURI(name);
-        modalImg.alt = captionFromFilename(name);
         modalCaption.textContent = captionFromFilename(name);
         modal.classList.add('open');
-        modal.setAttribute('aria-hidden', 'false');
       });
 
       gallery.appendChild(fig);
     });
 
-    function closeModal(){
+    function closeImageModal(){
       modal.classList.remove('open');
-      modal.setAttribute('aria-hidden', 'true');
       modalImg.src = '';
     }
 
-    closeBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal();
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeModal();
-    });
+    closeBtn.onclick = closeImageModal;
+    modal.onclick = e => e.target === modal && closeImageModal();
 
-    // Fixed to 4 rows — value set in :root CSS variable
-    document.documentElement.style.setProperty('--rows', 4);
+    aboutBtn.onclick = () => aboutModal.classList.add('open');
+    aboutCloseBtn.onclick = () => aboutModal.classList.remove('open');
+    aboutModal.onclick = e => e.target === aboutModal && aboutModal.classList.remove('open');
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape'){
+        closeImageModal();
+        aboutModal.classList.remove('open');
+      }
+    });
   </script>
 </body>
 </html>
