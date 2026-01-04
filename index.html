@@ -185,6 +185,29 @@
       padding:12px 18px 18px;
     }
 
+    /* Contact modal specific */
+    .email-display{
+      background:rgba(255,255,255,0.02);
+      border:1px solid rgba(255,255,255,0.04);
+      padding:14px 16px;
+      border-radius:8px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-top:8px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace;
+      color:var(--accent);
+      font-size:1rem;
+      overflow-wrap:anywhere;
+    }
+    .contact-actions .close-btn{
+      border-radius:6px;
+    }
+    .muted-small{
+      color:var(--muted);
+      font-size:0.95rem;
+    }
+
     @media (max-width:920px){
       :root{ --row-height:160px; }
     }
@@ -206,6 +229,7 @@
       <div style="display:flex; gap:10px; align-items:center;">
         <button id="bookBtn" class="close-btn" aria-label="Open book PDF">Read Book</button>
         <button id="aboutBtn" class="close-btn">About</button>
+        <button id="contactBtn" class="close-btn">Contact</button>
              </div>
     </header>
 
@@ -232,7 +256,7 @@
         <h2>About</h2>
         <p>
 Created by Tomer Jacobson & Maxim Golovanov, <br>
-          Songs from the Shuttered" is a fusion of visual art and music that seeks to explore the symbiotic relationship between the two disciplines. 
+          "Songs from the Shuttered" is a fusion of visual art and music that seeks to explore the symbiotic relationship between the two disciplines. 
         </p>
         <p>
         Through staged models, lighting and dynamic compositions, each photograph offers a captivating examination of different song lyrics. Drawing from classical art references, this collection prom[...]
@@ -242,7 +266,26 @@ Created by Tomer Jacobson & Maxim Golovanov, <br>
     </div>
   </div>
 
- 
+  <!-- Contact Modal (new) -->
+  <div id="contactModal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <div class="contact-body">
+        <h2>Contact</h2>
+        <p class="muted-small">For inquiries, commissions, or press — reach out via email:</p>
+
+        <div class="email-display" aria-live="polite">
+          <span id="contactEmailDisplay">tomer.jacobson@gmail.com</span>
+        </div>
+
+        <div class="contact-actions" style="margin-top:12px;">
+          <div style="flex:1"></div>
+          <button id="copyEmailBtn" class="close-btn" title="Copy email to clipboard">Copy</button>
+          <button id="openEmailBtn" class="close-btn" title="Open your mail app">Open in Mail App</button>
+          <button id="contactCloseBtn" class="close-btn">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script>
     const images = [
@@ -276,11 +319,15 @@ Created by Tomer Jacobson & Maxim Golovanov, <br>
 
     const bookBtn = document.getElementById('bookBtn');
 
-    // Contact elements
+    // Contact elements (new)
     const contactBtn = document.getElementById('contactBtn');
     const contactModal = document.getElementById('contactModal');
     const contactCloseBtn = document.getElementById('contactCloseBtn');
-    const contactForm = document.getElementById('contactForm');
+    const contactEmailEl = document.getElementById('contactEmailDisplay');
+    const copyBtn = document.getElementById('copyEmailBtn');
+    const openMailBtn = document.getElementById('openEmailBtn');
+
+    const CONTACT_EMAIL = 'tomer.jacobson@gmail.com';
 
     function captionFromFilename(name){
       return name.replace(/\.[^.]+$/, '').trim();
@@ -298,23 +345,35 @@ Created by Tomer Jacobson & Maxim Golovanov, <br>
       fig.addEventListener('click', () => {
         modalImg.src = 'images/' + encodeURI(name);
         modalCaption.textContent = captionFromFilename(name);
-        modal.classList.add('open');
+        openModal(modal);
       });
 
       gallery.appendChild(fig);
     });
 
+    function openModal(el){
+      if (!el) return;
+      el.classList.add('open');
+      el.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeModal(el){
+      if (!el) return;
+      el.classList.remove('open');
+      el.setAttribute('aria-hidden', 'true');
+    }
+
     function closeImageModal(){
-      modal.classList.remove('open');
+      closeModal(modal);
       modalImg.src = '';
     }
 
     closeBtn.onclick = closeImageModal;
     modal.onclick = e => e.target === modal && closeImageModal();
 
-    aboutBtn.onclick = () => aboutModal.classList.add('open');
-    aboutCloseBtn.onclick = () => aboutModal.classList.remove('open');
-    aboutModal.onclick = e => e.target === aboutModal && aboutModal.classList.remove('open');
+    aboutBtn.onclick = () => openModal(aboutModal);
+    aboutCloseBtn.onclick = () => closeModal(aboutModal);
+    aboutModal.onclick = e => e.target === aboutModal && closeModal(aboutModal);
 
     // Open the uploaded PDF (SFTS.pdf) when Book is clicked.
     bookBtn.addEventListener('click', () => {
@@ -323,38 +382,52 @@ Created by Tomer Jacobson & Maxim Golovanov, <br>
       if (win) win.opener = null;
     });
 
-    // Contact modal behaviour
-    contactBtn.onclick = () => contactModal.classList.add('open');
-    contactCloseBtn.onclick = () => contactModal.classList.remove('open');
-    contactModal.onclick = e => e.target === contactModal && contactModal.classList.remove('open');
+    // Contact modal behaviour (new)
+    contactBtn.onclick = () => {
+      // update email display (in case it changes)
+      if (contactEmailEl) contactEmailEl.textContent = CONTACT_EMAIL;
+      openModal(contactModal);
+    };
+    contactCloseBtn.onclick = () => closeModal(contactModal);
+    contactModal.onclick = e => e.target === contactModal && closeModal(contactModal);
 
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
+    // Copy email to clipboard
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(CONTACT_EMAIL);
+        const original = copyBtn.textContent;
+        copyBtn.textContent = 'Copied!';
+        setTimeout(() => copyBtn.textContent = original, 1500);
+      } catch (err) {
+        // fallback: select and prompt
+        try {
+          const range = document.createRange();
+          range.selectNode(contactEmailEl);
+          window.getSelection().removeAllRanges();
+          window.getSelection().addRange(range);
+          document.execCommand('copy');
+          window.getSelection().removeAllRanges();
+          const original = copyBtn.textContent;
+          copyBtn.textContent = 'Copied!';
+          setTimeout(() => copyBtn.textContent = original, 1500);
+        } catch (e) {
+          alert('Unable to copy email automatically. Please copy: ' + CONTACT_EMAIL);
+        }
+      }
+    });
 
-      const name = document.getElementById('contactName').value.trim();
-      const email = document.getElementById('contactEmail').value.trim();
-      const message = document.getElementById('contactMessage').value.trim();
-
-      // Construct a mailto: URL to open the user's email client with prefilled fields.
-      const to = 'tomer.jacobson@gmail.com';
-      const subject = `Website contact from ${name || 'Visitor'}`;
-      let body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
-
-      const mailto = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-      // Open user's mail client with the composed message. This will rely on the client system having a mail handler.
-      window.location.href = mailto;
-
-      // Close and reset form
-      contactModal.classList.remove('open');
-      contactForm.reset();
+    // Open mail client with prefilled recipient (no subject/body)
+    openMailBtn.addEventListener('click', () => {
+      const mailto = `mailto:${encodeURIComponent(CONTACT_EMAIL)}`;
+      const win = window.open(mailto, '_blank');
+      if (win) win.opener = null;
     });
 
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape'){
         closeImageModal();
-        aboutModal.classList.remove('open');
-        contactModal.classList.remove('open');
+        closeModal(aboutModal);
+        closeModal(contactModal);
       }
     });
   </script>
