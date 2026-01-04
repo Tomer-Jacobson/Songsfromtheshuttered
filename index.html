@@ -440,17 +440,7 @@ Created by Tomer Jacobson & Maxim Golovanov, <br>
           }
         });
 
-        const openBtn = document.createElement('button');
-        openBtn.className = 'close-btn';
-        openBtn.type = 'button';
-        openBtn.textContent = 'Open in Mail App';
-        openBtn.title = 'Open your mail app';
-        openBtn.addEventListener('click', () => {
-          const mailto = `mailto:${encodeURIComponent(email)}`;
-          const win = window.open(mailto, '_blank');
-          if (win) win.opener = null;
-        });
-
+       
         actions.appendChild(copyBtn);
         actions.appendChild(openBtn);
 
