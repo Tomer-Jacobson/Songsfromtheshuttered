@@ -1,217 +1,207 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Songs from the Shuttered — Gallery</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Songs from the Shuttered — Gallery</title>
 
-  <style>
-    :root{
-      --bg:#0f1113;
-      --card:#0b0c0d;
-      --muted:#9aa0a6;
-      --accent:#e6e6e6;
-      --gap:18px;
-      --rows:4;
-      --row-height:190px;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-    }
+<style>
+:root{
+  --bg:#0f1113;
+  --card:#0b0c0d;
+  --muted:#9aa0a6;
+  --accent:#e6e6e6;
+  --gap:18px;
+  --rows:4;
+  --row-height:190px;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
 
-    html,body{height:100%}
-    body{
-      margin:0;
-      background:linear-gradient(180deg,#070708 0%, #0f1113 100%);
-      color:var(--accent);
-      padding:36px;
-      display:flex;
-      justify-content:center;
-    }
+html,body{height:100%}
+body{
+  margin:0;
+  background:linear-gradient(180deg,#070708 0%, #0f1113 100%);
+  color:var(--accent);
+  padding:36px;
+  display:flex;
+  justify-content:center;
+}
 
-    .wrap{
-      width:100%;
-      max-width:1200px;
-    }
+.wrap{width:100%;max-width:1200px}
 
-    header{
-      margin-bottom:24px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:18px;
-      flex-wrap:wrap;
-    }
+header{
+  margin-bottom:24px;
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  flex-wrap:wrap;
+}
 
-    h1{margin:0;font-weight:600}
-    h2{font-weight:500;margin:0 0 10px 0}
-    p.lead{margin:0;color:var(--muted);font-size:0.95rem}
+h1{margin:0;font-weight:600}
+h2{margin:0 0 10px;font-weight:500}
+p.lead{margin:0;color:var(--muted);font-size:.95rem}
 
-    .close-btn{
-      background:transparent;
-      border:1px solid rgba(255,255,255,0.08);
-      color:var(--accent);
-      padding:8px 14px;
-      border-radius:6px;
-      cursor:pointer;
-      font-size:0.9rem;
-    }
+.close-btn{
+  background:transparent;
+  border:1px solid rgba(255,255,255,.08);
+  color:var(--accent);
+  padding:8px 14px;
+  border-radius:6px;
+  cursor:pointer;
+}
 
-    /* ---------- GALLERY ---------- */
+/* -------- GALLERY -------- */
 
-    .grid{
-      display:grid;
-      grid-auto-flow:column;
-      grid-auto-columns:minmax(220px,1fr);
-      grid-template-rows:repeat(var(--rows), var(--row-height));
-      gap:var(--gap);
-      margin-bottom:60px;
-    }
+.gallery-scroll{
+  overflow-x:auto;
+  padding-bottom:12px;
+  margin-bottom:60px;
+}
 
-    figure{
-      margin:0;
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border-radius:8px;
-      overflow:hidden;
-      box-shadow:0 6px 18px rgba(2,6,10,0.6);
-      cursor:pointer;
-      transition:transform 160ms ease, box-shadow 160ms ease;
-      display:flex;
-      flex-direction:column;
-    }
+.grid{
+  display:grid;
+  grid-auto-flow:column;
+  grid-auto-columns:minmax(220px,1fr);
+  grid-template-rows:repeat(var(--rows), var(--row-height));
+  gap:var(--gap);
+}
 
-    figure:hover{
-      transform:translateY(-6px);
-      box-shadow:0 18px 36px rgba(2,6,10,0.7);
-    }
+figure{
+  margin:0;
+  background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));
+  border-radius:8px;
+  overflow:hidden;
+  cursor:pointer;
+  transition:.2s;
+  display:flex;
+  flex-direction:column;
+}
 
-    .thumb{flex:1;position:relative;background:#000}
-    .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+figure:hover{
+  transform:translateY(-6px);
+}
 
-    figcaption{
-      padding:10px 12px;
-      font-size:0.9rem;
-      color:var(--muted);
-      border-top:1px solid rgba(255,255,255,0.03);
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
+.thumb{flex:1;position:relative;background:#000}
+.thumb img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
 
-    /* ---------- BEHIND THE SCENES ---------- */
+figcaption{
+  padding:10px 12px;
+  font-size:.9rem;
+  color:var(--muted);
+  border-top:1px solid rgba(255,255,255,.03);
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
 
-    .bts{
-      margin-top:40px;
-    }
+/* -------- BTS -------- */
 
-    .bts p{
-      color:var(--muted);
-      max-width:640px;
-      margin-bottom:18px;
-      font-size:0.95rem;
-    }
+.bts{margin-bottom:60px}
 
-    .video-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:18px;
-    }
+.bts p{
+  color:var(--muted);
+  max-width:640px;
+  margin-bottom:18px;
+}
 
-    .video{
-      position:relative;
-      aspect-ratio:16/9;
-      background:#000;
-      border-radius:10px;
-      overflow:hidden;
-      box-shadow:0 10px 30px rgba(0,0,0,0.6);
-    }
+.video-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:18px;
+}
 
-    .video iframe{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      border:0;
-    }
+.video{
+  position:relative;
+  aspect-ratio:16/9;
+  background:#000;
+  border-radius:10px;
+  overflow:hidden;
+}
 
-    /* ---------- MODALS ---------- */
+.video iframe{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+}
 
-    .modal{
-      position:fixed;
-      inset:0;
-      display:none;
-      align-items:center;
-      justify-content:center;
-      background:rgba(2,4,6,0.8);
-      z-index:1000;
-      padding:24px;
-    }
-    .modal.open{display:flex}
+/* -------- MODALS -------- */
 
-    .modal-content{
-      max-width:92%;
-      max-height:92%;
-      background:var(--card);
-      border-radius:8px;
-      overflow:hidden;
-      box-shadow:0 30px 80px rgba(2,4,6,0.7);
-      display:flex;
-      flex-direction:column;
-    }
+.modal{
+  position:fixed;
+  inset:0;
+  display:none;
+  background:rgba(0,0,0,.8);
+  align-items:center;
+  justify-content:center;
+  z-index:1000;
+  padding:24px;
+}
 
-    .modal-img{
-      width:100%;
-      height:calc(92vh - 120px);
-      object-fit:contain;
-      background:#000;
-    }
+.modal.open{display:flex}
 
-    .modal-footer{
-      padding:12px 14px;
-      color:var(--muted);
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
+.modal-content{
+  background:var(--card);
+  border-radius:8px;
+  max-width:92%;
+  max-height:92%;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
 
-    .contact-body{
-      padding:18px;
-      min-width:320px;
-      max-width:720px;
-    }
+.modal-img{
+  width:100%;
+  height:calc(92vh - 120px);
+  object-fit:contain;
+  background:#000;
+}
 
-    .email-list{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      margin-top:10px;
-    }
+.modal-footer{
+  padding:12px 14px;
+  color:var(--muted);
+  display:flex;
+  justify-content:space-between;
+}
 
-    .email-row{
-      display:flex;
-      gap:12px;
-      align-items:center;
-    }
+/* -------- CONTACT -------- */
 
-    .email-text{
-      flex:1;
-      background:rgba(255,255,255,0.02);
-      border:1px solid rgba(255,255,255,0.04);
-      padding:12px 14px;
-      border-radius:8px;
-      font-family:ui-monospace, monospace;
-      font-size:1rem;
-      overflow-wrap:anywhere;
-    }
+.contact-body{padding:18px;max-width:720px}
 
-    @media(max-width:640px){
-      :root{--row-height:120px}
-      .grid{grid-auto-columns:minmax(140px,1fr)}
-      .email-row{flex-direction:column;align-items:flex-start}
-    }
-  </style>
+.email-list{display:flex;flex-direction:column;gap:10px}
+
+.email-row{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+.email-text{
+  flex:1;
+  background:rgba(255,255,255,.02);
+  border:1px solid rgba(255,255,255,.04);
+  padding:12px;
+  border-radius:8px;
+  font-family:monospace;
+}
+
+@media(max-width:640px){
+  :root{--row-height:120px}
+  .grid{grid-auto-columns:minmax(140px,1fr)}
+}
+</style>
 </head>
 
 <body>
 <div class="wrap">
+
 <header>
   <div>
     <h1>Songs from the Shuttered</h1>
@@ -226,42 +216,31 @@
 
 <main>
 
-  <!-- GALLERY -->
+<div class="gallery-scroll">
   <section class="grid" id="gallery"></section>
+</div>
 
-  <!-- BEHIND THE SCENES -->
-  <section class="bts">
-    <h2>Behind the Scenes</h2>
-    <p>
-      A glimpse into the process, collaboration, and atmosphere behind
-      <em>Songs from the Shuttered</em>.
-    </p>
+<section class="bts">
+  <h2>Behind the Scenes</h2>
+  <p>A glimpse into the process and atmosphere behind the project.</p>
 
-    <div class="video-grid">
-      <div class="video">
-        <iframe src="https://www.youtube.com/embed/x_eCq8PWFlg"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen></iframe>
-      </div>
-
-      <div class="video">
-        <iframe src="https://www.youtube.com/embed/Mjla2uB-aRo"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen></iframe>
-      </div>
-
-      <div class="video">
-        <iframe src="https://www.youtube.com/embed/Lzurm2v99FY"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen></iframe>
-      </div>
+  <div class="video-grid">
+    <div class="video">
+      <iframe src="https://www.youtube.com/embed/x_eCq8PWFlg" allowfullscreen></iframe>
     </div>
-  </section>
+    <div class="video">
+      <iframe src="https://www.youtube.com/embed/Mjla2uB-aRo" allowfullscreen></iframe>
+    </div>
+    <div class="video">
+      <iframe src="https://www.youtube.com/embed/Lzurm2v99FY" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
 
 </main>
 </div>
 
-<!-- Image Modal -->
+<!-- IMAGE MODAL -->
 <div id="modal" class="modal">
   <div class="modal-content">
     <img id="modalImg" class="modal-img">
@@ -272,26 +251,22 @@
   </div>
 </div>
 
-<!-- About Modal -->
+<!-- ABOUT -->
 <div id="aboutModal" class="modal">
   <div class="modal-content">
     <div style="padding:20px">
       <h2>About</h2>
-      <p>
-        Created by Tomer Jacobson & Maxim Golovanov.<br>
-        A fusion of visual art and music exploring song lyrics.
-      </p>
+      <p>Created by Tomer Jacobson & Maxim Golovanov.</p>
       <button class="close-btn" id="aboutClose">Close</button>
     </div>
   </div>
 </div>
 
-<!-- Contact Modal -->
+<!-- CONTACT -->
 <div id="contactModal" class="modal">
   <div class="modal-content">
     <div class="contact-body">
       <h2>Contact</h2>
-      <p style="color:var(--muted)">For inquiries or press:</p>
       <div id="emailsList" class="email-list"></div>
       <div style="text-align:right;margin-top:12px">
         <button class="close-btn" id="contactClose">Close</button>
@@ -318,7 +293,7 @@ const modal=document.getElementById("modal");
 const modalImg=document.getElementById("modalImg");
 const modalCaption=document.getElementById("modalCaption");
 
-function caption(name){return name.replace(/\.[^.]+$/,"");}
+function caption(n){return n.replace(/\.[^.]+$/,"")}
 
 images.forEach(n=>{
   const f=document.createElement("figure");
@@ -338,23 +313,17 @@ modal.onclick=e=>e.target===modal&&modal.classList.remove("open");
 
 aboutBtn.onclick=()=>aboutModal.classList.add("open");
 aboutClose.onclick=()=>aboutModal.classList.remove("open");
-aboutModal.onclick=e=>e.target===aboutModal&&aboutModal.classList.remove("open");
 
 bookBtn.onclick=()=>window.open("RECORD.pdf","_blank");
 
 function renderEmails(){
   emailsList.innerHTML="";
-  CONTACT_EMAILS.forEach(email=>{
-    const row=document.createElement("div");
-    row.className="email-row";
-    row.innerHTML=`
-      <div class="email-text">${email}</div>
-      <button class="close-btn">Copy</button>`;
-    row.querySelector("button").onclick=async()=>{
-      await navigator.clipboard.writeText(email);
-      alert("Email copied");
-    };
-    emailsList.appendChild(row);
+  CONTACT_EMAILS.forEach(e=>{
+    const r=document.createElement("div");
+    r.className="email-row";
+    r.innerHTML=`<div class="email-text">${e}</div><button class="close-btn">Copy</button>`;
+    r.querySelector("button").onclick=()=>navigator.clipboard.writeText(e);
+    emailsList.appendChild(r);
   });
 }
 
@@ -363,7 +332,6 @@ contactBtn.onclick=()=>{
   contactModal.classList.add("open");
 };
 contactClose.onclick=()=>contactModal.classList.remove("open");
-contactModal.onclick=e=>e.target===contactModal&&contactModal.classList.remove("open");
 
 document.addEventListener("keydown",e=>{
   if(e.key==="Escape"){
