@@ -124,6 +124,12 @@ figcaption{
   overflow:hidden;
 }
 
+/* Special handling for vertical Facebook Reels */
+.video.vertical {
+  aspect-ratio: 9/16;
+  max-width: 300px;
+}
+
 .video iframe{
   position:absolute;
   inset:0;
@@ -234,13 +240,22 @@ figcaption{
     <div class="video">
       <iframe src="https://www.youtube.com/embed/Lzurm2v99FY" allowfullscreen></iframe>
     </div>
+    <div class="video vertical">
+      <iframe 
+        src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1301237869897120&show_text=false&width=267&t=0" 
+        style="border:none;overflow:hidden" 
+        scrolling="no" 
+        frameborder="0" 
+        allowfullscreen="true" 
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+      </iframe>
+    </div>
   </div>
 </section>
 
 </main>
 </div>
 
-<!-- IMAGE MODAL -->
 <div id="modal" class="modal">
   <div class="modal-content">
     <img id="modalImg" class="modal-img">
@@ -251,21 +266,18 @@ figcaption{
   </div>
 </div>
 
-<!-- ABOUT -->
 <div id="aboutModal" class="modal">
   <div class="modal-content">
     <div style="padding:20px">
       <h2>About</h2>
       <p>Created by Tomer Jacobson & Maxim Golovanov.</p>
       <p>“Songs from the Shuttered” is a conceptual photographic series that engages with an audacious premise: to translate the affective, narrative, and symbolic content of songs into staged visual photographs.</p>
-       <p>All images were photographed on location, using live models, and controlled on-location studio lighting.
-</p>
+       <p>All images were photographed on location, using live models, and controlled on-location studio lighting.</p>
       <button class="close-btn" id="aboutClose">Close</button>
     </div>
   </div>
 </div>
 
-<!-- CONTACT -->
 <div id="contactModal" class="modal">
   <div class="modal-content">
     <div class="contact-body">
@@ -311,13 +323,23 @@ images.forEach(n=>{
   gallery.appendChild(f);
 });
 
+const closeImg = document.getElementById("closeImg");
 closeImg.onclick=()=>modal.classList.remove("open");
 modal.onclick=e=>e.target===modal&&modal.classList.remove("open");
 
+const aboutBtn = document.getElementById("aboutBtn");
+const aboutModal = document.getElementById("aboutModal");
+const aboutClose = document.getElementById("aboutClose");
 aboutBtn.onclick=()=>aboutModal.classList.add("open");
 aboutClose.onclick=()=>aboutModal.classList.remove("open");
 
+const bookBtn = document.getElementById("bookBtn");
 bookBtn.onclick=()=>window.open("RECORD.pdf","_blank");
+
+const contactBtn = document.getElementById("contactBtn");
+const contactModal = document.getElementById("contactModal");
+const contactClose = document.getElementById("contactClose");
+const emailsList = document.getElementById("emailsList");
 
 function renderEmails(){
   emailsList.innerHTML="";
