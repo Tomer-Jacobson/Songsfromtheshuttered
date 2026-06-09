@@ -221,12 +221,6 @@ audio { height: 30px; width: 220px; filter: invert(1) grayscale(1); }
 
 <script>
 const images=["Sticker.jpg", "Her lies.jpg","The Power of love.jpg","Hallowed.jpg","society.jpg","Fake Empire.jpg","Peter.jpg","After the gold rush.jpg","Mercy Seat.jpg","I am waiting for my man.jpg","Weak.jpg","Cortez the killer.jpg","Flume.jpg","Hey Joe.jpg","The good son.jpg","One more cup of coffee.jpg","Lost in the flood.jpg"];
-
-// מילון שמות מותאמים אישית (עבור קבצים ששם השיר שלהם שונה משם הקובץ)
-const displayNames = {
-  "Sticker": "The Sticker Song"
-};
-
 const gallery=document.getElementById("gallery");
 const imageModal=document.getElementById("imageModal");
 const modalImg=document.getElementById("modalImg");
@@ -237,27 +231,24 @@ const audioContainer=document.getElementById("audioContainer");
 
 let currentIndex = 0;
 let isZoomed = false;
+const caption = n => n.replace(/\.[^.]+$/, "");
 
-// חילוץ שם הקובץ ללא הסיומת
-function getRawName(fileName) {
-  return fileName.replace(/\.[^.]+$/, "");
-}
-
-// קבלת השם לתצוגה (בודק חריגים במילון שמות)
-function getDisplayName(fileName) {
-  const raw = getRawName(fileName);
-  return displayNames[raw] || raw;
-}
-
-// בניית הגלריה מתוך המערך
+// Render Gallery
 images.forEach((n, index) => {
   const f = document.createElement("figure");
-  f.innerHTML = `<div class="thumb"><img src="images/${encodeURI(n)}" loading="lazy"></div><figcaption>${getDisplayName(n)}</figcaption>`;
+  
+  // כאן השינוי הבטוח: מחלצים את השם, ואם הוא Sticker, מחליפים את הכיתוב ל-The Sticker Song
+  let titleToShow = caption(n);
+  if (titleToShow === "Sticker") {
+    titleToShow = "The Sticker Song";
+  }
+  
+  f.innerHTML = `<div class="thumb"><img src="images/${encodeURI(n)}" loading="lazy"></div><figcaption>${titleToShow}</figcaption>`;
   f.onclick = () => openImage(index);
   gallery.appendChild(f);
 });
 
-// האזנה למצבי נגן האודיו
+// Audio State listeners
 audioPlayer.onplay = () => audioContainer.classList.add('is-playing');
 audioPlayer.onpause = () => audioContainer.classList.remove('is-playing');
 
@@ -272,28 +263,21 @@ function openImage(index) {
 }
 
 function updateModal(isFirstOpen = false) {
-  // 1. העלמת התמונה הנוכחית (Fade Out)
   modalImg.classList.remove('visible');
   audioContainer.classList.remove('is-playing');
   
   const n = images[currentIndex];
   const newSrc = "images/" + encodeURI(n);
-  const rawName = getRawName(n); // השם ללא סיומת שישמש לטעינת האודיו המקורי
-
-  // החלת השהייה רק במעבר בין תמונות, לא בפתיחה הראשונה
   const delay = isFirstOpen ? 0 : 400;
 
   setTimeout(() => {
     modalLoader.style.display = "block";
     modalImg.src = newSrc;
-    
-    // חיפוש קובץ האודיו לפי השם המקורי (למשל Sticker.mp3)
-    audioSource.src = "music/" + encodeURI(rawName) + ".mp3";
+    audioSource.src = "music/" + encodeURI(caption(n)) + ".mp3";
     audioPlayer.load();
 
     modalImg.onload = () => {
       modalLoader.style.display = "none";
-      // 2. הצגת התמונה החדשה (Fade In)
       requestAnimationFrame(() => {
         modalImg.classList.add('visible');
       });
