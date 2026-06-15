@@ -7,13 +7,13 @@
 
 <style>
 :root{
-  --bg:#070708;
-  --card:#0b0c0d;
-  --muted:#9aa0a6;
-  --accent:#e6e6e6;
-  --gap:24px;
-  --row-height:320px;
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --bg:#070708;
+  --card:#0b0c0d;
+  --muted:#9aa0a6;
+  --accent:#e6e6e6;
+  --gap:24px;
+  --row-height:320px;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
 html,body{height:100%; margin:0; background: var(--bg); color:var(--accent);}
@@ -25,57 +25,41 @@ header{ display:flex; justify-content:space-between; align-items: flex-start; fl
 h1{margin:0;font-weight:600; font-size: 2.5rem; letter-spacing: -1px;}
 p.lead{margin:8px 0 0;color:var(--muted);max-width:520px; font-size: 1.1rem;}
 
-.project-intro { 
-  max-width: 850px; margin: 20px 0 60px 0; line-height: 1.8; 
-  font-size: 1.15rem; color: var(--muted); 
-  border-left: 2px solid rgba(255,255,255,0.1); padding-left: 24px; 
+.project-intro { 
+  max-width: 850px; margin: 20px 0 60px 0; line-height: 1.8; 
+  font-size: 1.15rem; color: var(--muted); 
+  border-left: 2px solid rgba(255,255,255,0.1); padding-left: 24px; 
 }
 .project-intro strong { color: var(--accent); font-weight: 500; }
 
-button, .cta-btn, .pdf-btn { 
-  background:transparent; border:1px solid rgba(255,255,255,.2); 
-  color:var(--accent); padding:12px 24px; border-radius:6px; 
-  cursor:pointer; transition: 0.2s; text-decoration: none; display: inline-block;
-  font-size: 1rem; text-align: center;
+button, .cta-btn, .pdf-btn { 
+  background:transparent; border:1px solid rgba(255,255,255,.2); 
+  color:var(--accent); padding:12px 24px; border-radius:6px; 
+  cursor:pointer; transition: 0.2s; text-decoration: none; display: inline-block;
+  font-size: 1rem; text-align: center;
 }
 button:hover, .pdf-btn:hover { background: rgba(255,255,255,0.05); border-color: var(--accent); }
 
 /* ---------- GALLERY GRID ---------- */
 .grid{ display:grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap:var(--gap); margin-bottom: 80px; }
-figure{ 
-  margin:0; background:rgba(255,255,255,.02); border-radius:12px; overflow:hidden; 
-  cursor:pointer; transition:.5s cubic-bezier(0.165, 0.84, 0.44, 1); 
-  display:flex; flex-direction:column; height: var(--row-height); border: 1px solid rgba(255,255,255,0.05); 
+figure{ 
+  margin:0; background:rgba(255,255,255,.02); border-radius:12px; overflow:hidden; 
+  cursor:pointer; transition:.5s cubic-bezier(0.165, 0.84, 0.44, 1); 
+  display:flex; flex-direction:column; height: var(--row-height); border: 1px solid rgba(255,255,255,0.05); 
 }
 figure:hover { transform: scale(1.02); border-color: rgba(255,255,255,0.3); }
 .thumb{flex:1;position:relative;background:#000;}
 .thumb img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
 figcaption{padding:18px; font-size:1rem; color:var(--muted); border-top:1px solid rgba(255,255,255,.05); background: #0c0e10;}
 
-/* ---------- IMMERSIVE VISION SECTION ---------- */
-.vision-section { margin-bottom: 80px; padding: 40px; background: rgba(255,255,255,0.01); border-radius: 16px; border: 1px solid rgba(255,255,255,0.03); }
-.vision-section h2 { font-size: 2.2rem; font-weight: 600; margin: 0 0 10px 0; letter-spacing: -0.5px; }
-.vision-subtitle { font-size: 1.2rem; color: var(--muted); margin: 0 0 40px 0; }
-.artists-marquee { background: rgba(255,255,255,0.02); border: 1px dashed rgba(255,255,255,0.1); padding: 24px; border-radius: 8px; text-align: center; color: var(--muted); margin-bottom: 40px; font-size: 1.1rem; line-height: 1.6; }
-.artists-marquee strong { color: var(--accent); font-weight: 500; }
-.themes-container { display: flex; gap: var(--gap); margin-bottom: 40px; flex-wrap: wrap; }
-.theme-box { flex: 1; min-width: 280px; background: #0c0e10; padding: 30px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); }
-.theme-box h3 { margin: 0 0 12px 0; color: var(--accent); font-weight: 500; font-size: 1.3rem; }
-.theme-box p { margin: 0; color: var(--muted); line-height: 1.6; font-size: 1rem; }
-.pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--gap); margin-bottom: 20px; }
-.pillar-card { background: rgba(255,255,255,0.01); padding: 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.04); transition: 0.3s; }
-.pillar-card:hover { border-color: rgba(255,255,255,0.15); background: rgba(255,255,255,0.02); }
-.pillar-card h4 { margin: 0 0 12px 0; font-size: 1.15rem; font-weight: 500; color: var(--accent); display: flex; align-items: center; gap: 8px; }
-.pillar-card p { margin: 0; color: var(--muted); font-size: 0.95rem; line-height: 1.6; }
-
 /* ---------- BOOK SECTION ---------- */
 .book-section {
-  width: 100%; margin-bottom: 80px; border-radius: 12px; overflow: hidden;
-  position: relative; background: #000; border: 1px solid rgba(255,255,255,0.1);
+  width: 100%; margin-bottom: 80px; border-radius: 12px; overflow: hidden;
+  position: relative; background: #000; border: 1px solid rgba(255,255,255,0.1);
 }
 .book-hero {
-  width: 100%; height: 400px; background: url('images/Lost in the flood.jpg') center/cover no-repeat;
-  display: flex; align-items: center; justify-content: center; position: relative;
+  width: 100%; height: 400px; background: url('images/Lost in the flood.jpg') center/cover no-repeat;
+  display: flex; align-items: center; justify-content: center; position: relative;
 }
 .book-hero::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.7); }
 .book-content { position: relative; z-index: 2; text-align: center; padding: 20px; }
@@ -83,9 +67,9 @@ figcaption{padding:18px; font-size:1rem; color:var(--muted); border-top:1px soli
 
 /* ---------- BTS VIDEOS ---------- */
 .video-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:18px; margin-bottom: 80px;}
-.video-card{ 
-  aspect-ratio:16/9; background:#000; border-radius:10px; overflow:hidden; 
-  border: 1px solid rgba(255,255,255,.06); position: relative;
+.video-card{ 
+  aspect-ratio:16/9; background:#000; border-radius:10px; overflow:hidden; 
+  border: 1px solid rgba(255,255,255,.06); position: relative;
 }
 .video-card iframe, .video-card img{ width:100%; height:100%; border:0; object-fit:cover; }
 
@@ -94,27 +78,27 @@ figcaption{padding:18px; font-size:1rem; color:var(--muted); border-top:1px soli
 .modal.open{display:flex}
 
 .modal-img {
-  max-width: 100%; max-height: 100%; object-fit: contain;
-  transition: opacity 0.5s ease-in-out, transform 0.3s ease;
-  cursor: zoom-in; opacity: 0;
-  will-change: opacity;
+  max-width: 100%; max-height: 100%; object-fit: contain;
+  transition: opacity 0.5s ease-in-out, transform 0.3s ease;
+  cursor: zoom-in; opacity: 0;
+  will-change: opacity;
 }
 .modal-img.visible { opacity: 1 !important; }
 
 /* LOADING SPINNER */
 .loader {
-  border: 2px solid rgba(255,255,255,0.1);
-  border-top: 2px solid var(--accent);
-  border-radius: 50%; width: 35px; height: 35px;
-  animation: spin 0.8s linear infinite;
-  position: absolute; z-index: 9998; display: none;
+  border: 2px solid rgba(255,255,255,0.1);
+  border-top: 2px solid var(--accent);
+  border-radius: 50%; width: 35px; height: 35px;
+  animation: spin 0.8s linear infinite;
+  position: absolute; z-index: 9998; display: none;
 }
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
 .audio-wrap {
-  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
-  z-index: 10002; transition: opacity 0.6s ease;
-  opacity: 0.35; 
+  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+  z-index: 10002; transition: opacity 0.6s ease;
+  opacity: 0.35; 
 }
 .audio-wrap.is-playing { opacity: 0.15; }
 .audio-wrap:hover { opacity: 0.9 !important; }
@@ -122,169 +106,117 @@ figcaption{padding:18px; font-size:1rem; color:var(--muted); border-top:1px soli
 audio { height: 30px; width: 220px; filter: invert(1) grayscale(1); }
 
 .close-x {
-  position: absolute; top: 20px; right: 25px; font-size: 2.5rem; color: #fff;
-  background: none; border: none; cursor: pointer; z-index: 10003; opacity: 0.2; transition: 0.2s;
+  position: absolute; top: 20px; right: 25px; font-size: 2.5rem; color: #fff;
+  background: none; border: none; cursor: pointer; z-index: 10003; opacity: 0.2; transition: 0.2s;
 }
 .close-x:hover { opacity: 1; }
 
 .nav-btn {
-  position: absolute; top: 0; width: 15%; height: 100%;
-  background: transparent; color: #fff; border: none;
-  cursor: pointer; z-index: 10001; font-size: 2.5rem; opacity: 0; transition: 0.3s;
+  position: absolute; top: 0; width: 15%; height: 100%;
+  background: transparent; color: #fff; border: none;
+  cursor: pointer; z-index: 10001; font-size: 2.5rem; opacity: 0; transition: 0.3s;
 }
 .nav-btn:hover { opacity: 0.4; }
 .prev-btn { left: 0; text-align: left; padding-left: 30px; }
 .next-btn { right: 0; text-align: right; padding-right: 30px; }
 
 .standard-modal-content {
-    background:#0c0e10; padding:30px; border-radius:12px; width:90%; max-width:900px;
-    display: flex; flex-direction: column; gap: 20px; position: relative;
+    background:#0c0e10; padding:30px; border-radius:12px; width:90%; max-width:900px;
+    display: flex; flex-direction: column; gap: 20px; position: relative;
 }
 
 /* ---------- MOBILE ---------- */
 @media(max-width:640px){
-  h1 { font-size: 2rem; }
-  .grid { grid-template-columns: 1fr; }
-  .vision-section { padding: 20px; }
-  .vision-section h2 { font-size: 1.7rem; }
-  .book-hero { height: 300px; }
-  .audio-wrap { bottom: 20px; opacity: 0.5; width: 100%; text-align: center; }
-  audio { width: 80%; }
-  .nav-btn { display: none; }
-  .standard-modal-content iframe { display: none; }
+  h1 { font-size: 2rem; }
+  .grid { grid-template-columns: 1fr; }
+  .book-hero { height: 300px; }
+  .audio-wrap { bottom: 20px; opacity: 0.5; width: 100%; text-align: center; }
+  audio { width: 80%; }
+  .nav-btn { display: none; }
+  .standard-modal-content iframe { display: none; }
 }
 </style>
 </head>
 
 <body>
 <div class="wrap">
-  <header>
-    <div>
-      <h1>Songs from the Shuttered</h1>
-      <p class="lead">Fine-art visual interpretations of iconic music</p>
-    </div>
-    <div style="display:flex;gap:10px">
-      <button onclick="openPDF()">Read Book</button>
-      <button onclick="openContact()">Contact</button>
-    </div>
-  </header>
+  <header>
+    <div>
+      <h1>Songs from the Shuttered</h1>
+      <p class="lead">A fine-art photographic project dedicated to music </p>
+    </div>
+    <div style="display:flex;gap:10px">
+      <button onclick="openPDF()">Read Book</button>
+      <button onclick="openContact()">Contact</button>
+    </div>
+  </header>
 
-  <section class="project-intro">
-    <p>
-      <strong>Songs from the Shuttered</strong> is a ready-to-scale multimedia intellectual property co-created by Tomer Jacobson and Maxim Golovanov. 
-      The core framework consists of sixteen cinematic visual interpretations, each functioning as a sophisticated translation of a legendary song. 
-      By mapping the narrative and structural layer of music onto dynamic fine-art landscapes, the project bridges the gap between sound, imagery, and text. 
-      Click on the core portfolio items below to look and listen. 
-    </p>
-  </section>
+  <section class="project-intro">
+    <p>
+      <strong>Songs from the Shuttered</strong> is a fine-art photographic series co-created over the past decade by Tomer Jacobson and Maxim Golovanov. 
+      The project consists of sixteen meticulously staged photographs, each conceived as a visual interpretation of an iconic song. 
+      Click on the images to look and listen. 
+    </p>
+  </section>
 
-  <!-- PORTFOLIO ARCHIVE -->
-  <section class="grid" id="gallery"></section>
+  <section class="grid" id="gallery"></section>
 
-  <!-- IMMERSIVE EXHIBITION VISION -->
-  <section class="vision-section">
-    <h2>The Immersive Exhibition Vision</h2>
-    <p class="vision-subtitle">Transforming "Songs from the Shuttered" into a 360° Sensory Show</p>
-    
-    <div class="artists-marquee">
-      Designed around the profound emotional and cultural resonance of masterpieces by <br>
-      <strong>Bob Dylan, Elton John, Neil Young, Nick Cave, Iron Maiden, Bon Iver, Bruce Springsteen, and The National</strong>.
-    </div>
+  <section class="book-section">
+    <div class="book-hero">
+      <div class="book-content">
+        <h2>SFTS-The Book</h2>
+        <p>Explore the full narrative stories and classic references.</p>
+        <button class="cta-btn" onclick="openPDF()" style="background:var(--accent);color:#000;font-weight:bold;border:none;">Open Digital Book</button>
+      </div>
+    </div>
+  </section>
 
-    <div class="themes-container">
-      <div class="theme-box">
-        <h3>The Personal Sphere</h3>
-        <p>Intricate fine-art allegories examining the psychological complexity of interpersonal relationships, isolation, and the structural vulnerabilities of midlife crises.</p>
-      </div>
-      <div class="theme-box">
-        <h3>The Political Sphere</h3>
-        <p>Stark socio-political critique translated into cinematic scale, embedded with an uncompromising, universal anti-war and peace manifesto.</p>
-      </div>
-    </div>
-
-    <div class="pillars-grid">
-      <div class="pillar-card">
-        <h4>👁️ The Atmospheric Vault</h4>
-        <p>A dark, mythical space engineered without traditional museum lighting. The entire physical layout radiates solely from massive, life-scaled luminous screens, forcing an isolated, hyper-focused emotional state.</p>
-      </div>
-      <div class="pillar-card">
-        <h4>🎧 Proximity-Triggered Audio</h4>
-        <p>Utilizing wireless location-based tracking infrastructure (BLE Beacons / Ultra-Wideband). Studio-quality headphones automatically loop, crossfade, and trigger the corresponding iconic track as visitors approach specific coordinates in front of each display.</p>
-      </div>
-      <div class="pillar-card">
-        <h4>📜 Kinetic Lyrical Projections</h4>
-        <p>Lyrical poetry is dynamically projection-mapped directly beneath or surrounding the structures. The typography moves and shifts in absolute synchronization with the audio stream, enabling the viewer to see, hear, and read the text simultaneously.</p>
-      </div>
-      <div class="pillar-card">
-        <h4>📖 The Interactive Book Room</h4>
-        <p>A dedicated archival showcase staging the physical, premium large-format art book securely housed inside custom vinyl-record sleeves. Visitors can interactively browse analytical essays, historical backgrounds, and technical production insights.</p>
-      </div>
-    </div>
-    
-    <div style="text-align: center; margin-top: 40px;">
-      <button onclick="openContact()" style="background: var(--accent); color: #000; font-weight: bold; border: none; padding: 14px 32px;">Inquire For Co-Production & Partnership</button>
-    </div>
-  </section>
-
-  <!-- BOOK PREVIEW SECTION -->
-  <section class="book-section">
-    <div class="book-hero">
-      <div class="book-content">
-        <h2>SFTS - The Physical Edition</h2>
-        <p>Explore the comprehensive background essays and full analytical narratives.</p>
-        <button class="cta-btn" onclick="openPDF()" style="background:var(--accent);color:#000;font-weight:bold;border:none;">Open Digital Book</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- BEHIND THE SCENES SECTION -->
-  <section class="bts">
-    <h2 style="margin-bottom:20px; font-weight: 500;">Behind the Scenes</h2>
-    <div class="video-grid">
-      <div class="video-card" onclick="window.open('https://www.facebook.com/reel/1301237869897120','_blank')" style="cursor:pointer">
-        <img src="images/Mercy Seat.jpg" alt="Behind the scenes reel">
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2rem;background:rgba(0,0,0,.3)">▶</div>
-      </div>
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/x_eCq8PWFlg" allowfullscreen></iframe></div>
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/Mjla2uB-aRo" allowfullscreen></iframe></div>
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/Lzurm2v99FY" allowfullscreen></iframe></div>
-    </div>
-  </section>
+  <section class="bts">
+    <h2 style="margin-bottom:20px; font-weight: 500;">Behind the Scenes</h2>
+    <div class="video-grid">
+      <div class="video-card" onclick="window.open('https://www.facebook.com/reel/1301237869897120','_blank')" style="cursor:pointer">
+        <img src="images/Mercy Seat.jpg" alt="Behind the scenes reel">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2rem;background:rgba(0,0,0,.3)">▶</div>
+      </div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/x_eCq8PWFlg" allowfullscreen></iframe></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/Mjla2uB-aRo" allowfullscreen></iframe></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/Lzurm2v99FY" allowfullscreen></iframe></div>
+    </div>
+  </section>
 </div>
 
-<!-- CONTAINER & WORKFLOW OVERLAYS -->
 <div id="imageModal" class="modal">
-  <div id="modalLoader" class="loader"></div>
-  <button class="close-x" onclick="closeImage()">&times;</button>
-  <button class="nav-btn prev-btn" onclick="changeImage(-1)">&#10094;</button>
-  
-  <div style="width:100vw; height:100vh; display:flex; align-items:center; justify-content:center;" onclick="closeOnBg(event)">
-    <img id="modalImg" class="modal-img" onclick="toggleZoom(event)">
-  </div>
-  
-  <div class="audio-wrap" id="audioContainer">
-    <audio id="audioPlayer" controls><source id="audioSource" src="" type="audio/mpeg"></audio>
-  </div>
-  <button class="nav-btn next-btn" onclick="changeImage(1)">&#10095;</button>
+  <div id="modalLoader" class="loader"></div>
+  <button class="close-x" onclick="closeImage()">&times;</button>
+  <button class="nav-btn prev-btn" onclick="changeImage(-1)">&#10094;</button>
+  
+  <div style="width:100vw; height:100vh; display:flex; align-items:center; justify-content:center;" onclick="closeOnBg(event)">
+    <img id="modalImg" class="modal-img" onclick="toggleZoom(event)">
+  </div>
+  
+  <div class="audio-wrap" id="audioContainer">
+    <audio id="audioPlayer" controls><source id="audioSource" src="" type="audio/mpeg"></audio>
+  </div>
+  <button class="nav-btn next-btn" onclick="changeImage(1)">&#10095;</button>
 </div>
 
 <div id="pdfModal" class="modal">
-    <div class="standard-modal-content">
-        <h3 style="margin:0">SFTS Digital Book</h3>
-        <iframe src="RECORD.pdf" style="width:100%; height:60vh; border:none; border-radius: 4px; background: #000;"></iframe>
-        <div style="display:flex; flex-direction: column; gap:10px;">
-            <a href="RECORD.pdf" target="_blank" class="pdf-btn" style="background:var(--accent); color:#000; font-weight:bold; border:none;">OPEN FULL PDF IN NEW TAB</a>
-            <button onclick="closePDF()">Close Preview</button>
-        </div>
-    </div>
+    <div class="standard-modal-content">
+        <h3 style="margin:0">SFTS Digital Book</h3>
+        <iframe src="RECORD.pdf" style="width:100%; height:60vh; border:none; border-radius: 4px; background: #000;"></iframe>
+        <div style="display:flex; flex-direction: column; gap:10px;">
+            <a href="RECORD.pdf" target="_blank" class="pdf-btn" style="background:var(--accent); color:#000; font-weight:bold; border:none;">OPEN FULL PDF IN NEW TAB</a>
+            <button onclick="closePDF()">Close Preview</button>
+        </div>
+    </div>
 </div>
 
 <div id="contactModal" class="modal">
-    <div class="standard-modal-content" style="max-width:400px; text-align:center;">
-        <h3 style="margin:0">Co-Production & Collaboration</h3>
-        <p style="color:var(--muted); margin: 10px 0 20px;">tomer.jacobson@gmail.com</p>
-        <button onclick="closeContact()">Close</button>
-    </div>
+    <div class="standard-modal-content" style="max-width:400px; text-align:center;">
+        <h3 style="margin:0">Contact</h3>
+        <p style="color:var(--muted); margin: 10px 0 20px;">tomer.jacobson@gmail.com</p>
+        <button onclick="closeContact()">Close</button>
+    </div>
 </div>
 
 <script>
@@ -303,15 +235,17 @@ const caption = n => n.replace(/\.[^.]+$/, "");
 
 // Render Gallery
 images.forEach((n, index) => {
-  const f = document.createElement("figure");
-  let titleToShow = caption(n);
-  if (titleToShow === "Sticker") {
-    titleToShow = "The Sticker Song";
-  }
-  
-  f.innerHTML = `<div class="thumb"><img src="images/${encodeURI(n)}" loading="lazy"></div><figcaption>${titleToShow}</figcaption>`;
-  f.onclick = () => openImage(index);
-  gallery.appendChild(f);
+  const f = document.createElement("figure");
+  
+  // כאן השינוי הבטוח: מחלצים את השם, ואם הוא Sticker, מחליפים את הכיתוב ל-The Sticker Song
+  let titleToShow = caption(n);
+  if (titleToShow === "Sticker") {
+    titleToShow = "The Sticker Song";
+  }
+  
+  f.innerHTML = `<div class="thumb"><img src="images/${encodeURI(n)}" loading="lazy"></div><figcaption>${titleToShow}</figcaption>`;
+  f.onclick = () => openImage(index);
+  gallery.appendChild(f);
 });
 
 // Audio State listeners
@@ -319,60 +253,60 @@ audioPlayer.onplay = () => audioContainer.classList.add('is-playing');
 audioPlayer.onpause = () => audioContainer.classList.remove('is-playing');
 
 function openImage(index) {
-  currentIndex = index;
-  isZoomed = false;
-  modalImg.style.transform = "scale(1)";
-  
-  imageModal.classList.add("open");
-  document.body.style.overflow = "hidden";
-  updateModal(true); 
+  currentIndex = index;
+  isZoomed = false;
+  modalImg.style.transform = "scale(1)";
+  
+  imageModal.classList.add("open");
+  document.body.style.overflow = "hidden";
+  updateModal(true); 
 }
 
 function updateModal(isFirstOpen = false) {
-  modalImg.classList.remove('visible');
-  audioContainer.classList.remove('is-playing');
-  
-  const n = images[currentIndex];
-  const newSrc = "images/" + encodeURI(n);
-  const delay = isFirstOpen ? 0 : 400;
+  modalImg.classList.remove('visible');
+  audioContainer.classList.remove('is-playing');
+  
+  const n = images[currentIndex];
+  const newSrc = "images/" + encodeURI(n);
+  const delay = isFirstOpen ? 0 : 400;
 
-  setTimeout(() => {
-    modalLoader.style.display = "block";
-    modalImg.src = newSrc;
-    audioSource.src = "music/" + encodeURI(caption(n)) + ".mp3";
-    audioPlayer.load();
+  setTimeout(() => {
+    modalLoader.style.display = "block";
+    modalImg.src = newSrc;
+    audioSource.src = "music/" + encodeURI(caption(n)) + ".mp3";
+    audioPlayer.load();
 
-    modalImg.onload = () => {
-      modalLoader.style.display = "none";
-      requestAnimationFrame(() => {
-        modalImg.classList.add('visible');
-      });
-    };
-  }, delay);
+    modalImg.onload = () => {
+      modalLoader.style.display = "none";
+      requestAnimationFrame(() => {
+        modalImg.classList.add('visible');
+      });
+    };
+  }, delay);
 }
 
 function changeImage(step) {
-  currentIndex += step;
-  if (currentIndex >= images.length) currentIndex = 0;
-  if (currentIndex < 0) currentIndex = images.length - 1;
-  isZoomed = false;
-  modalImg.style.transform = "scale(1)";
-  updateModal();
+  currentIndex += step;
+  if (currentIndex >= images.length) currentIndex = 0;
+  if (currentIndex < 0) currentIndex = images.length - 1;
+  isZoomed = false;
+  modalImg.style.transform = "scale(1)";
+  updateModal();
 }
 
 function toggleZoom(e) {
-  e.stopPropagation();
-  isZoomed = !isZoomed;
-  modalImg.style.transform = isZoomed ? "scale(1.4)" : "scale(1)";
-  modalImg.style.cursor = isZoomed ? "zoom-out" : "zoom-in";
+  e.stopPropagation();
+  isZoomed = !isZoomed;
+  modalImg.style.transform = isZoomed ? "scale(1.4)" : "scale(1)";
+  modalImg.style.cursor = isZoomed ? "zoom-out" : "zoom-in";
 }
 
-function closeImage() { 
-  imageModal.classList.remove("open"); 
-  modalImg.classList.remove('visible');
-  audioPlayer.pause(); 
-  audioContainer.classList.remove('is-playing');
-  document.body.style.overflow="auto"; 
+function closeImage() { 
+  imageModal.classList.remove("open"); 
+  modalImg.classList.remove('visible');
+  audioPlayer.pause(); 
+  audioContainer.classList.remove('is-playing');
+  document.body.style.overflow="auto"; 
 }
 
 function closeOnBg(e) { if(e.target.tagName !== 'IMG') closeImage(); }
@@ -382,24 +316,24 @@ function openContact() { document.getElementById("contactModal").classList.add("
 function closeContact() { document.getElementById("contactModal").classList.remove("open"); document.body.style.overflow="auto"; }
 
 window.onclick = (e) => {
-    if (e.target.classList.contains('modal')) {
-        closePDF();
-        closeContact();
-    }
+    if (e.target.classList.contains('modal')) {
+        closePDF();
+        closeContact();
+    }
 };
 
 document.addEventListener('keydown', (e) => {
-  if (!imageModal.classList.contains("open")) return;
-  if (e.key === "ArrowLeft") changeImage(-1);
-  if (e.key === "ArrowRight") changeImage(1);
-  if (e.key === "Escape") closeImage();
+  if (!imageModal.classList.contains("open")) return;
+  if (e.key === "ArrowLeft") changeImage(-1);
+  if (e.key === "ArrowRight") changeImage(1);
+  if (e.key === "Escape") closeImage();
 });
 
 let startX = 0;
 imageModal.addEventListener('touchstart', e => startX = e.touches[0].clientX, {passive:true});
 imageModal.addEventListener('touchend', e => {
-  let diff = startX - e.changedTouches[0].clientX;
-  if (Math.abs(diff) > 60) changeImage(diff > 0 ? 1 : -1);
+  let diff = startX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 60) changeImage(diff > 0 ? 1 : -1);
 }, {passive:true});
 </script>
 </body>
