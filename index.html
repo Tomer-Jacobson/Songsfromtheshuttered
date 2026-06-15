@@ -52,6 +52,22 @@ figure:hover { transform: scale(1.02); border-color: rgba(255,255,255,0.3); }
 .thumb img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
 figcaption{padding:18px; font-size:1rem; color:var(--muted); border-top:1px solid rgba(255,255,255,.05); background: #0c0e10;}
 
+/* ---------- IMMERSIVE VISION SECTION ---------- */
+.vision-section { margin-bottom: 80px; padding: 40px; background: rgba(255,255,255,0.01); border-radius: 16px; border: 1px solid rgba(255,255,255,0.03); }
+.vision-section h2 { font-size: 2.2rem; font-weight: 600; margin: 0 0 10px 0; letter-spacing: -0.5px; }
+.vision-subtitle { font-size: 1.2rem; color: var(--muted); margin: 0 0 40px 0; }
+.artists-marquee { background: rgba(255,255,255,0.02); border: 1px dashed rgba(255,255,255,0.1); padding: 24px; border-radius: 8px; text-align: center; color: var(--muted); margin-bottom: 40px; font-size: 1.1rem; line-height: 1.6; }
+.artists-marquee strong { color: var(--accent); font-weight: 500; }
+.themes-container { display: flex; gap: var(--gap); margin-bottom: 40px; flex-wrap: wrap; }
+.theme-box { flex: 1; min-width: 280px; background: #0c0e10; padding: 30px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); }
+.theme-box h3 { margin: 0 0 12px 0; color: var(--accent); font-weight: 500; font-size: 1.3rem; }
+.theme-box p { margin: 0; color: var(--muted); line-height: 1.6; font-size: 1rem; }
+.pillars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--gap); margin-bottom: 20px; }
+.pillar-card { background: rgba(255,255,255,0.01); padding: 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.04); transition: 0.3s; }
+.pillar-card:hover { border-color: rgba(255,255,255,0.15); background: rgba(255,255,255,0.02); }
+.pillar-card h4 { margin: 0 0 12px 0; font-size: 1.15rem; font-weight: 500; color: var(--accent); display: flex; align-items: center; gap: 8px; }
+.pillar-card p { margin: 0; color: var(--muted); font-size: 0.95rem; line-height: 1.6; }
+
 /* ---------- BOOK SECTION ---------- */
 .book-section {
   width: 100%; margin-bottom: 80px; border-radius: 12px; overflow: hidden;
@@ -129,6 +145,8 @@ audio { height: 30px; width: 220px; filter: invert(1) grayscale(1); }
 @media(max-width:640px){
   h1 { font-size: 2rem; }
   .grid { grid-template-columns: 1fr; }
+  .vision-section { padding: 20px; }
+  .vision-section h2 { font-size: 1.7rem; }
   .book-hero { height: 300px; }
   .audio-wrap { bottom: 20px; opacity: 0.5; width: 100%; text-align: center; }
   audio { width: 80%; }
@@ -143,7 +161,7 @@ audio { height: 30px; width: 220px; filter: invert(1) grayscale(1); }
   <header>
     <div>
       <h1>Songs from the Shuttered</h1>
-      <p class="lead">A fine-art photographic project dedicated to music </p>
+      <p class="lead">Fine-art visual interpretations of iconic music</p>
     </div>
     <div style="display:flex;gap:10px">
       <button onclick="openPDF()">Read Book</button>
@@ -153,24 +171,73 @@ audio { height: 30px; width: 220px; filter: invert(1) grayscale(1); }
 
   <section class="project-intro">
     <p>
-      <strong>Songs from the Shuttered</strong> is a fine-art photographic series co-created over the past decade by Tomer Jacobson and Maxim Golovanov. 
-      The project consists of sixteen meticulously staged photographs, each conceived as a visual interpretation of an iconic song. 
-      Click on the images to look and listen. 
+      <strong>Songs from the Shuttered</strong> is a ready-to-scale multimedia intellectual property co-created by Tomer Jacobson and Maxim Golovanov. 
+      The core framework consists of sixteen cinematic visual interpretations, each functioning as a sophisticated translation of a legendary song. 
+      By mapping the narrative and structural layer of music onto dynamic fine-art landscapes, the project bridges the gap between sound, imagery, and text. 
+      Click on the core portfolio items below to look and listen. 
     </p>
   </section>
 
+  <!-- PORTFOLIO ARCHIVE -->
   <section class="grid" id="gallery"></section>
 
+  <!-- IMMERSIVE EXHIBITION VISION -->
+  <section class="vision-section">
+    <h2>The Immersive Exhibition Vision</h2>
+    <p class="vision-subtitle">Transforming "Songs from the Shuttered" into a 360° Sensory Show</p>
+    
+    <div class="artists-marquee">
+      Designed around the profound emotional and cultural resonance of masterpieces by <br>
+      <strong>Bob Dylan, Elton John, Neil Young, Nick Cave, Iron Maiden, Bon Iver, Bruce Springsteen, and The National</strong>.
+    </div>
+
+    <div class="themes-container">
+      <div class="theme-box">
+        <h3>The Personal Sphere</h3>
+        <p>Intricate fine-art allegories examining the psychological complexity of interpersonal relationships, isolation, and the structural vulnerabilities of midlife crises.</p>
+      </div>
+      <div class="theme-box">
+        <h3>The Political Sphere</h3>
+        <p>Stark socio-political critique translated into cinematic scale, embedded with an uncompromising, universal anti-war and peace manifesto.</p>
+      </div>
+    </div>
+
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <h4>👁️ The Atmospheric Vault</h4>
+        <p>A dark, mythical space engineered without traditional museum lighting. The entire physical layout radiates solely from massive, life-scaled luminous screens, forcing an isolated, hyper-focused emotional state.</p>
+      </div>
+      <div class="pillar-card">
+        <h4>🎧 Proximity-Triggered Audio</h4>
+        <p>Utilizing wireless location-based tracking infrastructure (BLE Beacons / Ultra-Wideband). Studio-quality headphones automatically loop, crossfade, and trigger the corresponding iconic track as visitors approach specific coordinates in front of each display.</p>
+      </div>
+      <div class="pillar-card">
+        <h4>📜 Kinetic Lyrical Projections</h4>
+        <p>Lyrical poetry is dynamically projection-mapped directly beneath or surrounding the structures. The typography moves and shifts in absolute synchronization with the audio stream, enabling the viewer to see, hear, and read the text simultaneously.</p>
+      </div>
+      <div class="pillar-card">
+        <h4>📖 The Interactive Book Room</h4>
+        <p>A dedicated archival showcase staging the physical, premium large-format art book securely housed inside custom vinyl-record sleeves. Visitors can interactively browse analytical essays, historical backgrounds, and technical production insights.</p>
+      </div>
+    </div>
+    
+    <div style="text-align: center; margin-top: 40px;">
+      <button onclick="openContact()" style="background: var(--accent); color: #000; font-weight: bold; border: none; padding: 14px 32px;">Inquire For Co-Production & Partnership</button>
+    </div>
+  </section>
+
+  <!-- BOOK PREVIEW SECTION -->
   <section class="book-section">
     <div class="book-hero">
       <div class="book-content">
-        <h2>SFTS-The Book</h2>
-        <p>Explore the full narrative stories and classic references.</p>
+        <h2>SFTS - The Physical Edition</h2>
+        <p>Explore the comprehensive background essays and full analytical narratives.</p>
         <button class="cta-btn" onclick="openPDF()" style="background:var(--accent);color:#000;font-weight:bold;border:none;">Open Digital Book</button>
       </div>
     </div>
   </section>
 
+  <!-- BEHIND THE SCENES SECTION -->
   <section class="bts">
     <h2 style="margin-bottom:20px; font-weight: 500;">Behind the Scenes</h2>
     <div class="video-grid">
@@ -185,6 +252,7 @@ audio { height: 30px; width: 220px; filter: invert(1) grayscale(1); }
   </section>
 </div>
 
+<!-- CONTAINER & WORKFLOW OVERLAYS -->
 <div id="imageModal" class="modal">
   <div id="modalLoader" class="loader"></div>
   <button class="close-x" onclick="closeImage()">&times;</button>
@@ -213,7 +281,7 @@ audio { height: 30px; width: 220px; filter: invert(1) grayscale(1); }
 
 <div id="contactModal" class="modal">
     <div class="standard-modal-content" style="max-width:400px; text-align:center;">
-        <h3 style="margin:0">Contact</h3>
+        <h3 style="margin:0">Co-Production & Collaboration</h3>
         <p style="color:var(--muted); margin: 10px 0 20px;">tomer.jacobson@gmail.com</p>
         <button onclick="closeContact()">Close</button>
     </div>
@@ -236,8 +304,6 @@ const caption = n => n.replace(/\.[^.]+$/, "");
 // Render Gallery
 images.forEach((n, index) => {
   const f = document.createElement("figure");
-  
-  // כאן השינוי הבטוח: מחלצים את השם, ואם הוא Sticker, מחליפים את הכיתוב ל-The Sticker Song
   let titleToShow = caption(n);
   if (titleToShow === "Sticker") {
     titleToShow = "The Sticker Song";
