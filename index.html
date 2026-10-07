@@ -1,4 +1,4 @@
- <!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
@@ -215,12 +215,13 @@ audio { height: 30px; width: 220px; filter: invert(1) grayscale(1); }
       <div class="video-card"><iframe src="https://www.youtube.com/embed/Lzurm2v99FY" allowfullscreen></iframe></div>
 
       <!-- Facebook reels -->
-      <div class="video-card" onclick="window.open('https://www.facebook.com/reel/1301237869897120','_blank')" style="cursor:pointer">
+      <!-- Click the thumbnail and the reel plays in the same card -->
+      <div class="video-card fb-card" data-fb="https://www.facebook.com/reel/1301237869897120" role="button" tabindex="0" aria-label="Play behind the scenes reel" style="cursor:pointer">
         <img src="images/Mercy Seat.jpg" alt="Behind the scenes reel">
         <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2rem;background:rgba(0,0,0,.3)">▶</div>
       </div>
 
-      <div class="video-card" onclick="window.open('https://www.facebook.com/reel/1278375372183370','_blank')" style="cursor:pointer">
+      <div class="video-card fb-card" data-fb="https://www.facebook.com/reel/1278375372183370" role="button" tabindex="0" aria-label="Play behind the scenes reel - Weak" style="cursor:pointer">
         <img src="images/Weak.jpg" alt="Behind the scenes reel - Weak">
         <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2rem;background:rgba(0,0,0,.3)">▶</div>
       </div>
@@ -377,6 +378,27 @@ imageModal.addEventListener('touchend', e => {
   let diff = startX - e.changedTouches[0].clientX;
   if (Math.abs(diff) > 60) changeImage(diff > 0 ? 1 : -1);
 }, {passive:true});
+
+// Facebook reels: swap the thumbnail for the embedded player inside the same card
+function playFacebook(card) {
+  if (card.classList.contains('playing')) return;
+  card.classList.add('playing');
+  card.removeAttribute('role');
+  card.removeAttribute('tabindex');
+  card.style.cursor = 'default';
+  const href = encodeURIComponent(card.dataset.fb);
+  card.innerHTML =
+    '<iframe src="https://www.facebook.com/plugins/video.php?href=' + href +
+    '&show_text=false&autoplay=true&width=560" ' +
+    'allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" ' +
+    'allowfullscreen scrolling="no"></iframe>';
+}
+document.querySelectorAll('.fb-card').forEach(card => {
+  card.addEventListener('click', () => playFacebook(card));
+  card.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); playFacebook(card); }
+  });
+});
 </script>
 </body>
 </html>
