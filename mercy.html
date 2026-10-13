@@ -1,6 +1,3 @@
-הנה תבנית ה-HTML המתוקנת **באנגלית בלבד** (LTR), מעוצבת בסגנון נקי, כהה ויוקרתי שתואם בדיוק את האסתטיקה של **Songs from the Shuttered**:
-
-```html
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -14,12 +11,12 @@
     
     <style>
         :root {
-            --bg-color: #0b0b0b;
-            --surface-color: #141414;
+            --bg-color: #080808;
+            --surface-color: #111111;
             --text-primary: #e6e6e6;
-            --text-secondary: #999999;
+            --text-secondary: #888888;
             --accent-color: #c29b38;
-            --border-color: #262626;
+            --border-color: #222222;
         }
 
         * {
@@ -39,12 +36,12 @@
             justify-content: space-between;
         }
 
-        /* Header / Navigation */
+        /* Top Header / Navigation */
         header {
             max-width: 1200px;
             width: 100%;
             margin: 0 auto;
-            padding: 30px 20px;
+            padding: 30px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -53,12 +50,10 @@
         .back-link {
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.9rem;
-            letter-spacing: 0.5px;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
             transition: color 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
 
         .back-link:hover {
@@ -68,124 +63,128 @@
         .project-title-small {
             font-family: 'Playfair Display', serif;
             font-size: 0.85rem;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             color: var(--text-secondary);
             text-transform: uppercase;
         }
 
-        /* Main Container */
+        /* Main Centerpiece Layout */
         main {
-            max-width: 1100px;
+            max-width: 900px;
             width: 100%;
             margin: 0 auto;
-            padding: 20px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: start;
-        }
-
-        @media (max-width: 900px) {
-            main {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-        }
-
-        /* Artwork Column */
-        .artwork-container {
-            width: 100%;
+            padding: 10px 20px 60px 20px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            align-items: center;
+        }
+
+        /* Hero Artwork & Player Showcase Wrapper */
+        .artwork-showcase {
+            width: 100%;
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+            margin-bottom: 60px;
+            overflow: hidden;
         }
 
         .artwork-frame {
             width: 100%;
-            background: var(--surface-color);
-            border: 1px solid var(--border-color);
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            line-height: 0; /* Prevents tiny gaps under image */
         }
 
         .artwork-frame img {
             width: 100%;
             height: auto;
             display: block;
-            transition: transform 0.7s ease;
+            transition: transform 0.8s ease;
         }
 
         .artwork-frame img:hover {
-            transform: scale(1.02);
+            transform: scale(1.01);
         }
 
-        .artwork-caption {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            text-align: center;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        /* Audio Player Box */
-        .audio-player-box {
-            background: var(--surface-color);
-            border: 1px solid var(--border-color);
-            padding: 24px;
+        /* Custom Integrated Audio Player Bar */
+        .player-bar {
+            padding: 20px 30px;
+            background: #0d0d0d;
+            border-top: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
             gap: 12px;
-            margin-top: 10px;
         }
 
-        .song-meta h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 400;
-            color: var(--text-primary);
-            margin-bottom: 4px;
-            letter-spacing: 0.5px;
-        }
-
-        .song-meta p {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
+        .player-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            color: var(--text-secondary);
         }
 
+        .player-info span {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* Native Audio Element Styled for Dark Mode */
         audio {
             width: 100%;
-            margin-top: 12px;
-            filter: invert(90%) hue-rotate(180deg);
+            height: 36px;
+            filter: invert(92%) hue-rotate(180deg) contrast(120%);
         }
 
-        /* Lyrics Column */
-        .lyrics-container {
+        /* Lyrics Section - Centered & Minimal */
+        .lyrics-section {
+            width: 100%;
+            max-width: 650px;
+            text-align: center;
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 30px;
         }
 
         .lyrics-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 15px;
         }
 
         .lyrics-header h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 400;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             text-transform: uppercase;
             color: var(--accent-color);
         }
 
+        .download-btn {
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .download-btn:hover {
+            color: var(--text-primary);
+        }
+
         .lyrics-content {
-            font-size: 1rem;
+            font-size: 1.05rem;
             color: #d1d1d1;
             white-space: pre-line;
-            line-height: 2.1;
+            line-height: 2.2;
             font-weight: 300;
             letter-spacing: 0.3px;
         }
@@ -197,36 +196,50 @@
             font-size: 0.8rem;
             color: var(--text-secondary);
             border-top: 1px solid var(--border-color);
-            margin-top: 60px;
             letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header {
+                padding: 20px;
+            }
+            .player-bar {
+                padding: 15px;
+            }
+            .player-info {
+                flex-direction: column;
+                gap: 4px;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Navigation -->
+    <!-- Header / Navigation -->
     <header>
-        <a href="index.html" class="back-link">
-            &larr; Back to Gallery
-        </a>
+        <a href="index.html" class="back-link">&larr; Back to Gallery</a>
         <div class="project-title-small">Songs from the Shuttered</div>
     </header>
 
     <!-- Main Content -->
     <main>
-        <!-- Left Column: Image and Audio Player -->
-        <div class="artwork-container">
+        <!-- Centerpiece: Large Image & Integrated Player -->
+        <div class="artwork-showcase">
             <div class="artwork-frame">
-                <img src="images/Mercy Seat.jpg" alt="The Mercy Seat - Visual Interpretation">
+                <!-- Replace with your high-res image path -->
+                <img src="images/Mercy Seat.jpg" alt="The Mercy Seat - Fine-Art Visual Interpretation">
             </div>
-            <div class="artwork-caption">Fine-Art Visual Interpretation</div>
-
-            <!-- Audio Player Section -->
-            <div class="audio-player-box">
-                <div class="song-meta">
-                    <h1>The Mercy Seat</h1>
-                    <p>Nick Cave & The Bad Seeds</p>
+            
+            <!-- Audio Bar -->
+            <div class="player-bar">
+                <div class="player-info">
+                    <div>Song: <span>The Mercy Seat</span></div>
+                    <div>Artist: <span>Nick Cave & The Bad Seeds</span></div>
                 </div>
+                <!-- Local MP3 file audio player -->
                 <audio controls>
                     <source src="audio/mercy-seat.mp3" type="audio/mpeg">
                     Your browser does not support the audio element.
@@ -234,10 +247,13 @@
             </div>
         </div>
 
-        <!-- Right Column: Song Lyrics -->
-        <div class="lyrics-container">
+        <!-- Lyrics Section -->
+        <div class="lyrics-section">
             <div class="lyrics-header">
                 <h2>Lyrics</h2>
+                <a href="audio/mercy-seat.mp3" download class="download-btn" title="Download Local MP3">
+                    &darr; Download MP3 (Local)
+                </a>
             </div>
             <div class="lyrics-content">
 It began when they come took me from my home
@@ -273,5 +289,3 @@ And I'm not afraid to die.
 
 </body>
 </html>
-
-```
