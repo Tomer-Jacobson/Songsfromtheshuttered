@@ -79,7 +79,7 @@
             align-items: center;
         }
 
-        /* Song Header & Credits Above Image */
+        /* Song Title Above Image */
         .song-header-info {
             width: 100%;
             text-align: center;
@@ -92,14 +92,6 @@
             font-weight: 400;
             color: var(--text-primary);
             letter-spacing: 1px;
-            margin-bottom: 6px;
-        }
-
-        .song-credits {
-            font-size: 0.9rem;
-            color: var(--accent-color);
-            letter-spacing: 2px;
-            text-transform: uppercase;
         }
 
         /* Hero Artwork & Player Showcase Wrapper */
@@ -153,11 +145,11 @@
             font-weight: 500;
         }
 
-        /* Native Audio Element Styled for Dark Mode */
+        /* Native Audio Element Styling - fully interactive */
         audio {
             width: 100%;
-            height: 36px;
-            filter: invert(92%) hue-rotate(180deg) contrast(120%);
+            height: 40px;
+            outline: none;
         }
 
         /* Lyrics Section - Centered & Minimal */
@@ -173,7 +165,7 @@
         .lyrics-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: baseline;
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 15px;
         }
@@ -187,19 +179,14 @@
             color: var(--accent-color);
         }
 
-        .download-btn {
-            font-size: 0.75rem;
-            letter-spacing: 1.5px;
+        .songwriter-credit {
+            font-size: 0.8rem;
+            letter-spacing: 1px;
             text-transform: uppercase;
             color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 6px;
         }
 
-        .download-btn:hover {
+        .songwriter-credit span {
             color: var(--text-primary);
         }
 
@@ -239,6 +226,11 @@
                 gap: 4px;
                 text-align: center;
             }
+            .lyrics-header {
+                flex-direction: column;
+                gap: 8px;
+                align-items: center;
+            }
         }
     </style>
 </head>
@@ -252,10 +244,9 @@
 
     <!-- Main Content -->
     <main>
-        <!-- Song Title & Credits Above Image -->
+        <!-- Song Title Above Image -->
         <div class="song-header-info">
             <h1>The Mercy Seat</h1>
-            <div class="song-credits">Songwriters / Lyrics: Nick Cave</div>
         </div>
 
         <!-- Centerpiece: Large Image & Integrated Player -->
@@ -265,13 +256,13 @@
                 <img src="images/Mercy Seat.jpg" alt="The Mercy Seat - Fine-Art Visual Interpretation">
             </div>
             
-            <!-- Audio Bar with corrected local path matching your project structure -->
+            <!-- Audio Bar -->
             <div class="player-bar">
                 <div class="player-info">
                     <div>Track: <span>The Mercy Seat</span></div>
                     <div>Visual Interpretation: <span>Tomer Jacobson & Maxim Golovanov</span></div>
                 </div>
-                <!-- ודא שנתיב קובץ ה-mp3 שלך תואם את מבנה התיקיות בגיטהאב (למשל audio/mercy.mp3 או שמות הקבצים שלך) -->
+                <!-- Local MP3 audio source -->
                 <audio controls>
                     <source src="audio/mercy-seat.mp3" type="audio/mpeg">
                     Your browser does not support the audio element.
@@ -283,9 +274,7 @@
         <div class="lyrics-section">
             <div class="lyrics-header">
                 <h2>Lyrics</h2>
-                <a href="audio/mercy-seat.mp3" download class="download-btn" title="Download Local MP3">
-                    &darr; Download MP3 (Local)
-                </a>
+                <div class="songwriter-credit">Songwriters / Lyrics: <span>Nick Cave</span></div>
             </div>
             <div class="lyrics-content">
 It began when they come took me from my home
